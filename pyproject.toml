@@ -37,7 +37,7 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7",
+    "pytest>=9.0.3",
     "pytest-cov",
     "ruff",
     "mypy",
