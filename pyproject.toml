@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
@@ -53,7 +53,15 @@ Documentation = "https://github.com/grische/eva-image-tool#readme"
 Issues = "https://github.com/grische/eva-image-tool/issues"
 
 [tool.hatch.version]
-path = "src/eva_kernel_image/__init__.py"
+source = "vcs"
+
+[tool.hatch.version.raw-options]
+# PyPI/TestPyPI reject PEP 440 local versions (the "+gSHA" suffix), so strip it.
+# Produces e.g. "0.1.1.dev5" instead of "0.1.1.dev5+g1a2b3c4".
+local_scheme = "no-local-version"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/eva_kernel_image/_version.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/eva_kernel_image"]

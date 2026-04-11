@@ -18,8 +18,7 @@ See ``docs/format-spec.md`` for the format this package implements.
 
 from __future__ import annotations
 
-__version__ = "0.1.0"
-
+from eva_kernel_image._version import __version__
 from eva_kernel_image.builder import build_image, build_lzma_payload, build_ti_record
 from eva_kernel_image.exceptions import (
     BuildError,

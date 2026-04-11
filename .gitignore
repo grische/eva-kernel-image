@@ -207,6 +207,9 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+# hatch-vcs generated version file
+src/eva_kernel_image/_version.py
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
