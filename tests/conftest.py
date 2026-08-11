@@ -118,7 +118,9 @@ def synth_payload(n: int, seed: int = 0xBEEF) -> bytes:
     """Deterministic ~random bytes for use as a synthetic kernel body."""
     import random
 
-    return random.Random(seed).randbytes(n)
+    rng = random.Random(seed)
+    # rng.randbytes(n) is 3.9+; getrandbits(0) raises before 3.9, hence the guard.
+    return rng.getrandbits(n * 8).to_bytes(n, "little") if n else b""
 
 
 def primary_kernel(size: int, seed: int) -> SyntheticKernel:

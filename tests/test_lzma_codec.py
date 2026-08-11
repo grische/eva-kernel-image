@@ -17,7 +17,8 @@ def _random_like(n: int, seed: int = 0x5EEDED) -> bytes:
     import random
 
     rng = random.Random(seed)
-    return rng.randbytes(n)
+    # rng.randbytes(n) is 3.9+; getrandbits(0) raises before 3.9, hence the guard.
+    return rng.getrandbits(n * 8).to_bytes(n, "little") if n else b""
 
 
 class TestPackEvaLzma:
