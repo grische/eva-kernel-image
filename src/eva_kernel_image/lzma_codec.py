@@ -40,6 +40,7 @@ import lzma
 import struct
 from dataclasses import dataclass
 
+from eva_kernel_image._compat import DATACLASS_SLOTS
 from eva_kernel_image.checksums import lzma_crc32
 from eva_kernel_image.constants import EVA_LZMA_DICT_SIZE
 from eva_kernel_image.exceptions import LzmaCodecError
@@ -48,7 +49,7 @@ _ALONE_HEADER_SIZE = 13  # properties(1) + dict_size(4) + uncompressed_size(8)
 _ULEN_UNKNOWN = 0xFFFFFFFFFFFFFFFF
 
 
-@dataclass(slots=True)
+@dataclass(**DATACLASS_SLOTS)
 class EVALzmaPayload:
     """Parsed (or newly built) LZMA payload inside a TI record.
 
