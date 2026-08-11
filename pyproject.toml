@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling>=1.27", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
@@ -7,7 +7,8 @@ name = "eva-kernel-image"
 dynamic = ["version"]
 description = "Parser, builder, and CLI for the Fritz!Box EVA kernel image format"
 readme = "README.md"
-license = { file = "LICENSE" }
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
 authors = [{ name = "Grische" }]
 requires-python = ">=3.10"
 keywords = [
