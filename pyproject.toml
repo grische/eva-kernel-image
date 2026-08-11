@@ -75,7 +75,7 @@ packages = ["src/eva_kernel_image"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py38"  # tracks requires-python
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
@@ -83,7 +83,7 @@ ignore = ["E501"]  # line length is handled by the formatter; no hard cap
 
 [tool.mypy]
 strict = true
-python_version = "3.10"
+python_version = "3.10"  # mypy's minimum supported version
 files = ["src"]
 
 [tool.pytest.ini_options]
