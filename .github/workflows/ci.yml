@@ -34,6 +34,9 @@ jobs:
       - name: mypy
         run: mypy src
 
+      - name: Check syntax against 3.8 runtime
+        run: vermin --target=3.8- --no-tips --violations src tests
+
   test:
     runs-on: ${{ matrix.os }}
     strategy:
