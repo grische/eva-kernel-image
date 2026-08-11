@@ -47,10 +47,10 @@ dev = [
 eva-image = "eva_kernel_image.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/grische/eva-image-tool"
-Repository = "https://github.com/grische/eva-image-tool"
-Documentation = "https://github.com/grische/eva-image-tool#readme"
-Issues = "https://github.com/grische/eva-image-tool/issues"
+Homepage = "https://github.com/grische/eva-kernel-image"
+Repository = "https://github.com/grische/eva-kernel-image"
+Documentation = "https://github.com/grische/eva-kernel-image#readme"
+Issues = "https://github.com/grische/eva-kernel-image/issues"
 
 [tool.hatch.version]
 source = "vcs"
