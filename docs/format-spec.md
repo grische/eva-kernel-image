@@ -255,12 +255,13 @@ def build_table():
     table = [0] * 256
     for i in range(1, 256):
         crc = table[i // 2]
-        c   = (crc >> 31) ^ (i & 1)
+        c = (crc >> 31) ^ (i & 1)
         crc = (crc << 1) & 0xFFFFFFFF
         if c & 1:
             crc ^= poly
         table[i] = crc
     return table
+
 
 def file_signature_crc(payload):
     table = build_table()
