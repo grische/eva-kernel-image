@@ -10,7 +10,9 @@ readme = "README.md"
 license = "AGPL-3.0-or-later"
 license-files = ["LICENSE"]
 authors = [{ name = "Grische" }]
-requires-python = ">=3.10"
+# Support OpenWrt's minimum version, see
+# https://github.com/openwrt/openwrt/blob/main/include/prereq-build.mk
+requires-python = ">=3.8"
 keywords = [
     "fritzbox",
     "avm",
@@ -26,6 +28,8 @@ classifiers = [
     "Intended Audience :: System Administrators",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
