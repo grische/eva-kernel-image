@@ -26,6 +26,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from eva_kernel_image._compat import DATACLASS_SLOTS
 from eva_kernel_image.constants import (
     EVA_LZMA_HEADER_SIZE,
     EVA_LZMA_STREAM_HEADER_SIZE,
@@ -33,7 +34,7 @@ from eva_kernel_image.constants import (
 from eva_kernel_image.lzma_codec import EVALzmaPayload, pack_eva_lzma, unpack_eva_lzma
 
 
-@dataclass(slots=True)
+@dataclass(**DATACLASS_SLOTS)
 class DualHeader:
     """Outer wrapper around a dual-kernel image (magic ``0xFEED9112``).
 
@@ -50,14 +51,14 @@ class DualHeader:
     checksum: int
 
 
-@dataclass(slots=True)
+@dataclass(**DATACLASS_SLOTS)
 class FileSignature:
     """Trailing 8-byte file signature (magic ``0xC453DE23`` + CRC-32)."""
 
     crc: int
 
 
-@dataclass(slots=True)
+@dataclass(**DATACLASS_SLOTS)
 class LegacyPadding:
     """Opaque byte regions preserved for byte-identical round-trip fidelity.
 
@@ -72,7 +73,7 @@ class LegacyPadding:
     post_data: bytes = b""
 
 
-@dataclass(slots=True)
+@dataclass(**DATACLASS_SLOTS)
 class TIRecord:
     """Parsed TI record: header + LZMA payload + trailer.
 
@@ -104,7 +105,7 @@ class TIRecord:
         self.lzma = pack_eva_lzma(raw)
 
 
-@dataclass(slots=True)
+@dataclass(**DATACLASS_SLOTS)
 class EVAImage:
     """Top-level container for a parsed or newly built EVA kernel image.
 

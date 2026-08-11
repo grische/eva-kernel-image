@@ -10,7 +10,9 @@ readme = "README.md"
 license = "AGPL-3.0-or-later"
 license-files = ["LICENSE"]
 authors = [{ name = "Grische" }]
-requires-python = ">=3.10"
+# Support OpenWrt's minimum version, see
+# https://github.com/openwrt/openwrt/blob/main/include/prereq-build.mk
+requires-python = ">=3.8"
 keywords = [
     "fritzbox",
     "avm",
@@ -26,6 +28,8 @@ classifiers = [
     "Intended Audience :: System Administrators",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -37,11 +41,14 @@ classifiers = [
 dependencies = []
 
 [project.optional-dependencies]
+# Expect development systems to have Python3.10+
 dev = [
-    "pytest>=9.0.3",
+    "pytest>=9.0.3; python_version >= '3.10'",
+    "pytest; python_version < '3.10'",
     "pytest-cov",
-    "ruff~=0.16.2",
-    "mypy",
+    "ruff~=0.16.2; python_version >= '3.10'",
+    "mypy; python_version >= '3.10'",
+    "vermin; python_version >= '3.10'",
 ]
 
 [project.scripts]
@@ -69,7 +76,7 @@ packages = ["src/eva_kernel_image"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py38"  # tracks requires-python
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
@@ -77,7 +84,7 @@ ignore = ["E501"]  # line length is handled by the formatter; no hard cap
 
 [tool.mypy]
 strict = true
-python_version = "3.10"
+python_version = "3.10"  # mypy's minimum supported version
 files = ["src"]
 
 [tool.pytest.ini_options]
